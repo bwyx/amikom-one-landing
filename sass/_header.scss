@@ -1,0 +1,194 @@
+/* Header Navbar */
+
+
+header {
+    width: 100%;
+    height: 64px;
+    position: absolute;
+    z-index: 9;
+    top: 0;
+    left: 0;
+    transition: .4s;
+    line-height: 64px;
+}
+
+@media (min-width: 1350px){
+  header{
+    &.sticky{
+      position: fixed;
+      top: 30%;
+      transform: translateY(-50%);
+      left: 0;
+      width: 300px;
+      .header-menu{
+        .nav{
+          display: block;
+          .nav-item{
+            position: relative;
+            margin: 20px 0;
+            opacity: 0.5;
+            &:hover{
+              opacity: 1;
+            }
+            &:before{
+              content: '';
+              background: var(--secondary-color);
+              height: 2px;
+              width: 50px;
+              position: absolute;
+              top: 50%;
+              left: -100px;
+              transition: .3s;
+            }
+            &.active{
+              opacity: 1;
+              font-weight: 700;
+              &:before{
+                left: -30px;
+              }
+            }
+            .nav-link{
+              font-size: 1.2rem;
+              text-transform: none;
+              text-align: left;
+              font-weight: 400;
+              margin-left: 30px;
+              font-family: "Playfair Display";
+            }
+          }
+        }
+      }
+      .header-logo{
+        display: none;
+      }
+    }
+    &.show{
+      left: 0;
+    }
+  }
+}
+.header-logo a img {
+    max-height: 28px;
+}
+
+.header-menu{
+  .nav{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+    visibility: hidden;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    top: 0;
+    left: 0;
+    z-index: 8;
+    padding: 74px 25px;
+    background-color: #fff;
+    transform: translateY(-10px);
+    transition: all .375s ease-in-out;
+    opacity: 0;
+    .nav-item{
+      margin: 5px 10px;
+      .nav-link {
+         cursor: pointer;
+         display: block;
+         padding: 5px 0;
+         font-family: 'Montserrat',sans-serif;
+         font-size: 13px;
+         line-height: 14px;
+         letter-spacing: 1px;
+         text-transform: uppercase;
+         text-align: center;
+         color: var(--color);
+         transition: all .5s ease-in-out;
+         opacity: .8;
+         font-weight: 800;
+         &:hover{
+           transition: .2s;
+           color: var(--secondary-color);
+         }
+       }
+       &.active .nav-link{
+         opacity: 1;
+         color: var(--secondary-color);
+       }
+    }
+  }
+  &.open .nav {
+    visibility: visible;
+    background-color: #f7f7f7;
+    transform: translateY(0);
+    transition: all .375s ease-in-out;
+    opacity: 1;
+  }
+}
+
+
+
+.mobile-menu {
+    width: 20px;
+    height: 10px;
+    display: block;
+    position: relative;
+    z-index: 9;
+    cursor: pointer;
+    span {
+      width: 20px;
+      height: 2px;
+      display: block;
+      background-color: var(--main-color);
+      border-radius: 2px;
+      transition: all .375s ease-in-out;
+    }
+    span+span {
+    width: 14px;
+    margin: 6px 0 0 6px;
+  }
+  &.mobile span{
+    background-color: var(--color);
+    transition: all .375s ease-in-out;
+    &:first-child {
+        transform: rotate(45deg) translate(3px,4px);
+        transition: all .375s ease-in-out;
+    }
+    &:last-child {
+        width: 20px;
+        transform: rotate(-45deg) translate(2px,-2.5px);
+        margin: 6px 0 0;
+    }
+  }
+}
+
+
+@media (min-width: 992px){
+  .header-menu{
+    .nav {
+        width: auto;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        position: relative;
+        visibility: visible;
+        top: auto;
+        left: auto;
+        height: auto;
+        padding: 0;
+        background-color: transparent;
+        transform: translateY(0);
+        transition: none;
+        opacity: 1;
+    }
+    &.open .nav {
+      background: none;
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  .mobile-menu {
+    display: none;
+  }
+}
